@@ -2,21 +2,25 @@ import React, { useState, useEffect } from 'react'
 import Card from "../../../../Cards/Card"
 import { ifo } from '../../../../../config/PancakeSwap/constants/ifo'
 import { getVaultUserData } from '../../../../../utils/BNBChain/PancakeSwapHelpers/Helpers'
+import { useCakePrice } from '../../../../../hooks/useDexTokenPrices'
 import Buttons from './Buttons'
 import { useWeb3React } from '@web3-react/core'
 
 const Index = () => {
   const { account, active, chainId } = useWeb3React()
   const [userICAKE, setUserICAKE] = useState()
+  const [userICAKEUSD, setUserICAKEUSD] = useState()
 
-  const iCAKEChecker = async () => {
+  const ICAKEChecker = async () => {
+    const price = await useCakePrice();
     const getUser = await getVaultUserData(account)
     setUserICAKE(getUser.depositedCake)
+    setUserICAKEUSD(Number(getUser.depositedCake) * Number(price))
   }
 
   useEffect(() => {
     if (active === true && chainId === 56) {
-      iCAKEChecker()
+      ICAKEChecker()
     }
     // eslint-disable-next-line
   }, [active, chainId])
@@ -49,7 +53,7 @@ const Index = () => {
         <div className='p-3'>
           <div className='flex justify-between text-lightText dark:text-darkText font-semibold'>
             <p>შესასვლელად:</p>
-            <p>{Number(userICAKE).toFixed(4)} CAKE</p>
+            <p>{Number(userICAKE).toFixed(4)} CAKE (${Number(userICAKEUSD).toLocaleString("en-US")})</p>
           </div>
           <div className='flex justify-between text-lightText dark:text-darkText font-semibold'>
             <p>ასაგროვებელი:</p>

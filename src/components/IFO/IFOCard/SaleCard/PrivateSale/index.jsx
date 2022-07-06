@@ -1,12 +1,35 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Card from "../../../../Cards/Card"
 import { ifo } from '../../../../../config/PancakeSwap/constants/ifo'
-/* import DepositCAKE from '../Buttons/DepositCAKE'
-import ApproveIFO from '../Buttons/ApproveIFO'
-import HarvestTokens from '../Buttons/HarvestTokens' */
+import { useWeb3React } from '@web3-react/core'
+import { getIfoPoolContract } from '../../../../../utils/BNBChain/PancakeSwapHelpers/contractHelpers'
+import { useCakePrice } from '../../../../../hooks/useDexTokenPrices'
 import Buttons from './Buttons'
+import Web3 from 'web3'
 
-const index = () => {
+const Index = () => {
+  const { active, chainId } = useWeb3React()
+  const [userMAX, setUserMAX] = useState()
+  const [userMAXUSD, setUserMAXUSD] = useState()
+  const ifoContract = getIfoPoolContract(ifo.poolContract, chainId)
+  const web3 = new Web3('https://bsc-dataseed1.binance.org/');
+
+  const GetUserMAX = async () => {
+    const price = await useCakePrice();
+    const maxlp = await ifoContract.methods.viewPoolInformation(0).call()
+    console.log(maxlp)
+    const maxCAKE = web3.utils.fromWei(maxlp[2], 'ether')
+    setUserMAX(maxCAKE)
+    setUserMAXUSD(Number(maxCAKE) * Number(price))
+  }
+
+  useEffect(() => {
+    if (active === true && chainId === 56) {
+      GetUserMAX()
+    }
+    // eslint-disable-next-line
+  }, [active, chainId])
+
   return (
     <div>
       <Card>
@@ -35,7 +58,7 @@ const index = () => {
         <div className='p-3'>
           <div className='flex justify-between text-lightText dark:text-darkText font-semibold'>
             <p>შესასვლელად:</p>
-            <p>0.00</p>
+            <p>{Number(userMAX).toFixed(4)} CAKE (${Number(userMAXUSD).toLocaleString("en-US")})</p>
           </div>
           <div className='flex justify-between text-lightText dark:text-darkText font-semibold'>
             <p>ასაგროვებელი:</p>
@@ -55,4 +78,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index
