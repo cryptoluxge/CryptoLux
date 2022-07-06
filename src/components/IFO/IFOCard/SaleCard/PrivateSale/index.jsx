@@ -8,7 +8,7 @@ import Buttons from './Buttons'
 import Web3 from 'web3'
 
 const Index = () => {
-  const { active, chainId } = useWeb3React()
+  const { account, active, chainId } = useWeb3React()
   const [userMAX, setUserMAX] = useState()
   const [userMAXUSD, setUserMAXUSD] = useState()
   const [userDepositedCakePrivate, setUserDepositedCakePrivate] = useState()
