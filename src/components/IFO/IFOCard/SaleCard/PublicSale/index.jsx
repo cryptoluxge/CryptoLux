@@ -12,8 +12,8 @@ const Index = () => {
   const { account, active, chainId } = useWeb3React()
   const [userICAKE, setUserICAKE] = useState()
   const [userICAKEUSD, setUserICAKEUSD] = useState()
-  const [userDepositedCake, setUserDepositedCake] = useState()
-  const [userRecivedToken, setUserRecivedToken] = useState()
+  const [userDepositedCakePublic, setUserDepositedCakePublic] = useState()
+  const [userRecivedTokenPublic, setUserRecivedTokenPublic] = useState()
   const ifoContract = getIfoPoolContract(ifo.poolContract, chainId)
   const web3 = new Web3(window.ethereum);
 
@@ -24,17 +24,16 @@ const Index = () => {
     setUserICAKEUSD(Number(getUser.depositedCake) * Number(price))
   }
 
-  const details = async () => {
+  const detailsPublic = async () => {
     const ifo = await ifoContract.methods.viewUserOfferingAndRefundingAmountsForPools(account, [1]).call();
-    console.log(ifo)
-    setUserDepositedCake(Number(web3.utils.fromWei(ifo[0][1], "ether")))
-    setUserRecivedToken(Number(web3.utils.fromWei(ifo[0][0], "ether")))
+    setUserDepositedCakePublic(Number(web3.utils.fromWei(ifo[0][1], "ether")))
+    setUserRecivedTokenPublic(Number(web3.utils.fromWei(ifo[0][0], "ether")))
   }
 
   useEffect(() => {
     if (active === true && chainId === 56) {
       ICAKEChecker()
-      details()
+      detailsPublic()
     }
     // eslint-disable-next-line
   }, [active, chainId])
@@ -50,14 +49,14 @@ const Index = () => {
             <img src="https://pancakeswap.finance/images/tokens/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.svg" alt="PancakeSwap" className='w-10' />
             <div className='text-lightText dark:text-darkText'>
               <p>შეტანილი CAKE</p>
-              <p className='font-semibold'>{Number(userDepositedCake) > 0 ? Number(userDepositedCake).toFixed(4) : '0.000'}</p>
+              <p className='font-semibold'>{Number(userDepositedCakePublic) > 0 ? Number(userDepositedCakePublic).toFixed(4) : '0.000'}</p>
             </div>
           </div>
           <div className='flex items-center gap-2'>
             <img src={ifo.tokenDetails.tokenLogo} alt="PancakeSwap" className='w-10 rounded-full' />
             <div className='text-lightText dark:text-darkText'>
               <p>მიღებული {ifo.tokenDetails.symbol}</p>
-              <p className='font-semibold'>{Number(userRecivedToken) > 0 ? Number(userRecivedToken).toFixed(4) : '0.000'}</p>
+              <p className='font-semibold'>{Number(userRecivedTokenPublic) > 0 ? Number(userRecivedTokenPublic).toFixed(4) : '0.000'}</p>
             </div>
           </div>
         </div>
@@ -67,7 +66,7 @@ const Index = () => {
         <div className='p-3'>
           <div className='flex justify-between text-lightText dark:text-darkText font-semibold'>
             <p>შესასვლელად:</p>
-            <p>{Number(userICAKE).toFixed(4)} CAKE (${Number(userICAKEUSD).toLocaleString("en-US")})</p>
+            <p>{Number(userICAKE).toFixed(4)} (${Number(userICAKEUSD).toLocaleString("en-US")})</p>
           </div>
           <div className='flex justify-between text-lightText dark:text-darkText font-semibold'>
             <p>ასაგროვებელი:</p>
