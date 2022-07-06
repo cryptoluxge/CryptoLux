@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import Card from "../../../../Cards/Card"
+import Buttons from './Buttons'
+import Web3 from 'web3'
 import { ifo } from '../../../../../config/PancakeSwap/constants/ifo'
 import { getVaultUserData } from '../../../../../utils/BNBChain/PancakeSwapHelpers/Helpers'
 import { useCakePrice } from '../../../../../hooks/useDexTokenPrices'
-import Buttons from './Buttons'
+import { getIfoPoolContract } from '../../../../../utils/BNBChain/PancakeSwapHelpers/contractHelpers'
 import { useWeb3React } from '@web3-react/core'
 
 const Index = () => {
   const { account, active, chainId } = useWeb3React()
   const [userICAKE, setUserICAKE] = useState()
   const [userICAKEUSD, setUserICAKEUSD] = useState()
+  const [userDepositedCake, setUserDepositedCake] = useState()
+  const [userRecivedToken, setUserRecivedToken] = useState()
+  const ifoContract = getIfoPoolContract(ifo.poolContract, chainId)
+  const web3 = new Web3(window.ethereum);
 
   const ICAKEChecker = async () => {
     const price = await useCakePrice();
@@ -18,9 +24,17 @@ const Index = () => {
     setUserICAKEUSD(Number(getUser.depositedCake) * Number(price))
   }
 
+  const details = async () => {
+    const ifo = await ifoContract.methods.viewUserOfferingAndRefundingAmountsForPools(account, [1]).call();
+    console.log(ifo)
+    setUserDepositedCake(Number(web3.utils.fromWei(ifo[0][1], "ether")))
+    setUserRecivedToken(Number(web3.utils.fromWei(ifo[0][0], "ether")))
+  }
+
   useEffect(() => {
     if (active === true && chainId === 56) {
       ICAKEChecker()
+      details()
     }
     // eslint-disable-next-line
   }, [active, chainId])
@@ -36,14 +50,14 @@ const Index = () => {
             <img src="https://pancakeswap.finance/images/tokens/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.svg" alt="PancakeSwap" className='w-10' />
             <div className='text-lightText dark:text-darkText'>
               <p>შეტანილი CAKE</p>
-              <p className='font-semibold'>0.000</p>
+              <p className='font-semibold'>{Number(userDepositedCake) > 0 ? Number(userDepositedCake).toFixed(4) : '0.000'}</p>
             </div>
           </div>
           <div className='flex items-center gap-2'>
             <img src={ifo.tokenDetails.tokenLogo} alt="PancakeSwap" className='w-10 rounded-full' />
             <div className='text-lightText dark:text-darkText'>
               <p>მიღებული {ifo.tokenDetails.symbol}</p>
-              <p className='font-semibold'>0.000</p>
+              <p className='font-semibold'>{Number(userRecivedToken) > 0 ? Number(userRecivedToken).toFixed(4) : '0.000'}</p>
             </div>
           </div>
         </div>
