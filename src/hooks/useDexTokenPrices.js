@@ -9,6 +9,5 @@ export const useCakePrice = async () => {
   const reserve0 = getCAKEBUSDReserves[0];
   const reserve1 = getCAKEBUSDReserves[1];
   const getCakePrice = Number(web3.utils.fromWei(reserve1, "ether")) / Number(web3.utils.fromWei(reserve0, "ether"));
-  console.log(getCakePrice)
   return getCakePrice;
 };

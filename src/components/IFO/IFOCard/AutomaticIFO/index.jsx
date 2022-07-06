@@ -42,7 +42,6 @@ const Index = () => {
 
   const autoDeposit = async (poolType) => {
     const userCakeBalance = await lpContract.methods.balanceOf(account).call()
-    console.log(userCakeBalance)
     await offeringTokenIFOPoolContract.methods.depositPool(userCakeBalance, poolType).send({ from: account })
       .once("transactionHash", (hash) => {
         console.log(`თქვენი ტრანზაქცია მუშავდება: ${hash}`);
