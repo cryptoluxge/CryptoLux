@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Card from "../../../../Cards/Card"
 import { ifo } from '../../../../../config/PancakeSwap/constants/ifo'
+import { getVaultUserData } from '../../../../../utils/BNBChain/PancakeSwapHelpers/Helpers'
 import Buttons from './Buttons'
+import { useWeb3React } from '@web3-react/core'
 
-const index = () => {
+const Index = () => {
+  const { account, active, chainId } = useWeb3React()
+  const [userICAKE, setUserICAKE] = useState()
+
+  const iCAKEChecker = async () => {
+    const getUser = await getVaultUserData(account)
+    setUserICAKE(getUser.depositedCake)
+  }
+
+  useEffect(() => {
+    if (active === true && chainId === 56) {
+      iCAKEChecker()
+    }
+    // eslint-disable-next-line
+  }, [active, chainId])
+
   return (
     <div>
       <Card>
@@ -32,7 +49,7 @@ const index = () => {
         <div className='p-3'>
           <div className='flex justify-between text-lightText dark:text-darkText font-semibold'>
             <p>შესასვლელად:</p>
-            <p>0.00</p>
+            <p>{Number(userICAKE).toFixed(4)} CAKE</p>
           </div>
           <div className='flex justify-between text-lightText dark:text-darkText font-semibold'>
             <p>ასაგროვებელი:</p>
@@ -52,4 +69,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index
