@@ -2,8 +2,8 @@ export const ifo = {
   id: "TRIVIA",
   poolContract: "0x23C520d8227524E2cDD00360358864fF3fFC36b4",
   ifoBanner: "https://pancakeswap.finance/images/ifos/trivia-bg.png",
-  startBlock: 19340385,
-  endBlock: 19341585,
+  startBlock: 19340230,
+  endBlock: 19341430,
   privatePool: {
     saleAmount: 10000000,
     raiseAmount: 350000,
