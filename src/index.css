@@ -10,13 +10,13 @@ body {
 
 @layer base {
   html {
-    font-family: 'FiraGO', sans-serif;
+    font-family: 'glaho', sans-serif;
   }
 }
 
 @font-face {
-  font-family: "FiraGO";
-  src: url("../public/fonts/FiraGO-Regular.ttf");
+  font-family: "glaho";
+  src: url("../public/fonts/glaho.ttf");
 }
 
 ::-webkit-scrollbar {

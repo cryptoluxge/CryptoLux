@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        firago: ["FiraGO", "regular"],
+        firago: ["glaho", "regular"],
       },
       gradientColorStops: theme => ({
         ...theme('colors'),
