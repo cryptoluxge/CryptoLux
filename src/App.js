@@ -10,6 +10,7 @@ import Market from "./layouts/market"
 import CRFund from "./layouts/cryptorank/fund"
 import VCPage from './layouts/cryptorank/fund/VCPage';
 import IFOPage from './layouts/pancakeswap/IFO'
+import Staking from './layouts/pancakeswap/Staking'
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
             <Route path="/cryptorank/fund" element={<CRFund />} />
             <Route path="/cryptorank/fund/:id" element={<VCPage />} />
             <Route path="/pancakeswap/ifo" element={<IFOPage />} />
+            <Route path="/pancakeswap/staking" element={<Staking />} />
           </Routes>
         </Sidenav>
       </BrowserRouter>

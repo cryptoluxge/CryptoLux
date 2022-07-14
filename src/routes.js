@@ -73,6 +73,11 @@ export const menuItem = [
         key: "ifo",
         path: "/pancakeswap/ifo"
       },
+      {
+        name: "Staking",
+        key: "staking",
+        path: "/pancakeswap/staking"
+      },
     ]
   },
 ]

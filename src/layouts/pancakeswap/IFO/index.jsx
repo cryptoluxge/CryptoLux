@@ -1,9 +1,9 @@
 import React from 'react'
-import IFOPool from "../../../components/IFO/IFOPool"
-import IFOCard from "../../../components/IFO/IFOCard"
-import IFOTokenDescription from "../../../components/IFO/IFOTokenDescription"
-import PrivateSaleInfo from "../../../components/IFO/PrivateSaleInfo"
-import TotalUsers from "../../../components/IFO/TotalUsers"
+import IFOPool from "../../../components/PancakeSwap/IFO/IFOPool"
+import IFOCard from "../../../components/PancakeSwap/IFO/IFOCard"
+import IFOTokenDescription from "../../../components/PancakeSwap/IFO/IFOTokenDescription"
+import PrivateSaleInfo from "../../../components/PancakeSwap/IFO/PrivateSaleInfo"
+import TotalUsers from "../../../components/PancakeSwap/IFO/TotalUsers"
 
 const index = () => {
   return (

@@ -24,7 +24,7 @@ import NFTMarketAbi from "../../../config/PancakeSwap/abi/nftmarketAbi.json";
 import Web3 from "web3";
 
 const getContract = (abi, address, chainId) => {
-  const signerOrProvider = window.ethereum;
+  const signerOrProvider = chainId === 56 ? window.ethereum : "https://bsc-dataseed.binance.org";
   const web3 = new Web3(signerOrProvider);
   const newContract = new web3.eth.Contract(abi, address);
   return newContract;

@@ -1,4 +1,4 @@
-import { getCakeVaultV2, getCakeContract } from "./contractHelpers";
+import { getCakeVaultV2, getCakeContract, getSyrupPoolContract } from "./contractHelpers";
 import { contract } from "../../../config/PancakeSwap/constants/contracts";
 import moment from "moment";
 import BigNumber from "bignumber.js";
@@ -63,4 +63,25 @@ export const getUserCakeBalance = async (account) => {
   const cakeContract = getCakeContract(56)
   const userBalance = await cakeContract.methods.balanceOf(account).call()
   return web3.utils.fromWei(userBalance, "ether");
+}
+
+export const getUserSyrupPoolData = async (poolContract, account, name) => {
+  const contract = getSyrupPoolContract(poolContract)
+  const cake = getCakeContract()
+
+  const staked = await contract.methods.userInfo(account).call()
+  const userStaked = web3.utils.fromWei(staked[0], 'ether')
+
+  const pending = await contract.methods.pendingReward(account).call()
+  const userPending = web3.utils.fromWei(pending, 'ether')
+
+  const stakedTotal = await cake.methods.balanceOf(poolContract).call()
+  const totalCakeStaked = web3.utils.fromWei(stakedTotal, 'ether')
+
+  const approved = await cake.methods.allowance(account, poolContract).call()
+  const isApproved = Number(approved) > 0
+
+  const data = { name, userStaked, userPending, totalCakeStaked, isApproved }
+  return data
+
 }
