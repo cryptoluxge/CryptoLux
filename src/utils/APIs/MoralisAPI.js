@@ -32,13 +32,13 @@ export const getNftTransactions = async (walletAddress, chain) => {
 };
 
 export const getTokenBalances = async (walletAddress, chain) => {
-  const json = await fetch(`https://deep-index.moralis.io/api/v2/${walletAddress}/erc20?chain=${chain}`, {
+  const json = await axios(`https://deep-index.moralis.io/api/v2/${walletAddress}/erc20?chain=${chain}`, {
     headers: {
       "X-API-Key": "l7H7MfYwlfi1e7MjCpxbWsEWzLTudxOmgxJl4HvNixTrUduN1dZRHyW9ehyN4PXK",
-    },
+    }
   })
-    .then((response) => response.json())
-    .then((data) => data);
+    .then((response) => response.data)
+    .catch(() => "error");
   return json;
 };
 

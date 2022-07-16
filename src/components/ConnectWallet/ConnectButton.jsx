@@ -6,7 +6,7 @@ import WalletItem from './WalletItem'
 import { injected } from "./connectors"
 import { useWeb3React } from '@web3-react/core'
 
-export default function Modal() {
+export default function Modal({ text }) {
 	const { activate } = useWeb3React()
 	const [open, setOpen] = useState(false)
 	const cancelButtonRef = useRef(null)
@@ -30,7 +30,7 @@ export default function Modal() {
 			<button onClick={() => setOpen(true)}
 				type="button" className="duration-150 hover:scale-105 text-white bg-gradient-to-br from-violet to-violetDark rounded-lg text-sm font-medium px-5 py-2.5 text-center inline-flex items-center shadow-md shadow-dark">
 				<svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
-				შესვლა
+				{text ? text : 'შესვლა'}
 			</button>
 			<Transition.Root show={open} as={Fragment}>
 				<Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpen}>

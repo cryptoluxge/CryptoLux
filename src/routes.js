@@ -16,6 +16,13 @@ export const menuItem = [
   },
   {
     type: "noncollapsible",
+    path: "/wallet",
+    key: "wallet",
+    name: "საფულე",
+    icon: HomeIcon
+  },
+  {
+    type: "noncollapsible",
     path: "/market",
     key: "market",
     name: "მარკეტი",
