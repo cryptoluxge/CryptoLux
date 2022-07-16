@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export const getNativeTransactions = async (walletAddress, chain) => {
   const json = await fetch(`https://deep-index.moralis.io/api/v2/${walletAddress}?chain=${chain}`, {
     headers: {
