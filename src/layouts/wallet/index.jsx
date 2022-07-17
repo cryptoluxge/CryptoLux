@@ -7,6 +7,7 @@ import { shortAddress } from '../../utils/WalletHelpers'
 import { getBep20TokenContract } from '../../utils/BNBChain/Helpers/contractHelpers'
 import ConnectButton from '../../components/ConnectWallet/ConnectButton'
 import AddToMetamask from '../../components/AddToMetamask'
+import NativeCoinSend from './NativeCoinSend'
 import MobileWallet from './Mobile'
 import BSC from "../../images/Blockchains/Binance.svg"
 import ETH from "../../images/Blockchains/Ethereum.svg"
@@ -96,7 +97,10 @@ const Index = () => {
   return (
     <div>
       <div className='mt-5'>
-        {<div className='hidden md:flex justify-center'>
+        <div className='hidden md:flex justify-center gap-4'>
+          <div className='w-[280px]'>
+            <NativeCoinSend />
+          </div>
           <div className='bg-white dark:bg-darkCard rounded-lg w-[850px]'>
             <p className='p-3 text-lightText dark:text-darkText'>ტოკენების ბალანსი</p>
             <Tab.Group>
@@ -194,7 +198,7 @@ const Index = () => {
                                       <AddToMetamask variant='text' address={x.token_address} decimal={x.decimals} symbol={x.symbol} />
                                     </td>
                                   </tr>
-                                  
+
                                 ))}
                               </tbody>
                             </table>
@@ -335,9 +339,12 @@ const Index = () => {
               )}
             </Tab.Group>
           </div >
-        </div >}
+        </div >
         <div className='flex md:hidden'>
-          <MobileWallet />
+          <div className='space-y-3'>
+            <NativeCoinSend />
+            <MobileWallet />
+          </div>
         </div>
       </div >
       <Modal title='ტოკენის გაგზავნა' open={modalOpen} close={() => setModalOpen(!modalOpen)}>
