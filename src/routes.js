@@ -5,6 +5,7 @@ import PeopleIcon from "./images/SidebarIcons/PeopleIcon.svg"
 import MarketIcon from "./images/SidebarIcons/MarketIcon.svg"
 import CryptoRankIcon from "./images/SidebarIcons/CryptoRankIcon.svg"
 import PancakeSwapIcon from "./images/SidebarIcons/PancakeSwapIcon.svg"
+import WalletIcon from "./images/SidebarIcons/WalletIcon.svg"
 
 export const menuItem = [
   {
@@ -19,7 +20,7 @@ export const menuItem = [
     path: "/wallet",
     key: "wallet",
     name: "საფულე",
-    icon: HomeIcon
+    icon: WalletIcon
   },
   {
     type: "noncollapsible",
