@@ -98,9 +98,11 @@ const Index = () => {
     <div>
       <div className='mt-5'>
         <div className='hidden md:flex justify-center gap-4'>
-          <div className='w-[280px]'>
-            <NativeCoinSend />
-          </div>
+          {active ? (
+            <div className='w-[280px]'>
+              <NativeCoinSend />
+            </div>
+          ) : null}
           <div className='bg-white dark:bg-darkCard rounded-lg w-[850px]'>
             <p className='p-3 text-lightText dark:text-darkText'>ტოკენების ბალანსი</p>
             <Tab.Group>
@@ -151,7 +153,7 @@ const Index = () => {
               {active ? (
                 <Tab.Panels>
                   <Tab.Panel>
-                    <div className="overflow-x-auto shadow-md rounded-lg max-h-[500px]">
+                    <div className="overflow-x-auto s rounded-lg max-h-[500px]">
                       {bscTokenBalance.isERROR ? (
                         <div className='flex justify-center text-center py-5'>
                           <p className='font-bold text-lightText dark:text-darkText'>დაფიქსირდა შეცდომა :( ცადეთ თავიდან.</p>

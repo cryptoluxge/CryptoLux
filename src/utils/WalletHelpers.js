@@ -1,5 +1,8 @@
 import Web3 from "web3"
 import { getSimpleCoinPrice } from "./APIs/CoinGeckoAPI";
+import BSC from "../images/Blockchains/Binance.svg"
+import ETH from "../images/Blockchains/Ethereum.svg"
+import AVAX from "../images/Blockchains/Avalanche.svg"
 
 const web3 = new Web3(window.ethereum);
 
@@ -25,8 +28,27 @@ export const getChainName = (chainId) => {
       return "BSC"
     case 43114:
       return "AVAX"
-    case 42161:
-      return "ARBITRUM"
+  }
+}
+
+export const getChainFullName = (chainId) => {
+  // eslint-disable-next-line
+  switch (chainId) {
+    case 1:
+      return <div className="flex flex-row items-center gap-2">
+        <img src={ETH} alt='eth' className='w-3' />
+        <p className="font-semibold text-sm hidden md:flex">Ethereum</p>
+      </div>
+    case 56:
+      return <div className="flex flex-row items-center gap-2">
+        <img src={BSC} alt='bsc' className='w-4' />
+        <p className="font-semibold text-sm hidden md:flex">Smart Chain</p>
+      </div>
+    case 43114:
+      return <div className="flex flex-row items-center gap-2">
+        <img src={AVAX} alt='avax' className='w-4' />
+        <p className="font-semibold text-sm hidden md:flex">Avalanche</p>
+      </div>
   }
 }
 

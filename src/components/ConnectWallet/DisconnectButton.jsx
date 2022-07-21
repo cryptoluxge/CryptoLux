@@ -1,11 +1,12 @@
-import { Fragment, useRef, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { FiExternalLink } from "react-icons/fi"
+import { useState } from 'react'
+import Modal from '../Modal'
+import { FiExternalLink, FiCopy } from "react-icons/fi"
+import { CgProfile } from "react-icons/cg"
 import { useWeb3React } from '@web3-react/core'
-import { getChainName, getExplorerURL, shortAddress } from '../../utils/WalletHelpers'
+import { getExplorerURL, shortAddress } from '../../utils/WalletHelpers'
 import ChainSelector from "../ChainSelector";
 
-export default function Modal() {
+export default function DisconnectButton() {
 	const { account, deactivate, chainId } = useWeb3React()
 	const [open, setOpen] = useState(false)
 
@@ -13,7 +14,7 @@ export default function Modal() {
 		window.location.reload();
 	}
 
-	async function disconnect() {
+	async function walletDisconnect() {
 		try {
 			deactivate();
 			localStorage.setItem("isWalletConnected", false);
@@ -23,48 +24,39 @@ export default function Modal() {
 		}
 	}
 
-	const cancelButtonRef = useRef(null)
 	return (
 		<div>
 			<div className='flex items-center gap-2'>
 				<ChainSelector />
-				<button onClick={() => setOpen(true)} type="button" className="font-medium rounded-lg text-sm px-2 py-2.5 text-center inline-flex bg-gradient-to-br from-violet to-violetDark text-white">
-					{shortAddress(account, 5)}
+				<button onClick={() => setOpen(true)} type="button" className="duration-150 hover:scale-95 font-bold uppercase rounded-lg text-sm px-2 py-2.5 text-center inline-flex bg-gradient-to-br from-violet to-violetDark text-white">
+					{shortAddress(account, 4)}
 				</button>
 			</div>
-			<Transition.Root show={open} as={Fragment}>
-				<Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpen}>
-					<Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0" enterTo="opacity-100" leave="ease-in duration-200" leaveFrom="opacity-100" leaveTo="opacity-0">
-						<div className="fixed inset-0 bg-darkCard bg-opacity-75 transition-opacity" />
-					</Transition.Child>
-					<div className="fixed z-10 inset-0">
-						<div className="flex items-center sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
-							<Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enterTo="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leaveFrom="opacity-100 translate-y-0 sm:scale-100" leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-								<Dialog.Panel className="relative rounded-lg text-left overflow-hidden transform transition-all sm:my-8 sm:max-w-lg sm:w-full shadow-md dark:shadow-black">
-									<div className="relative bg-white rounded-lg dark:bg-darkBackground">
-										<div className="py-4 px-6 rounded-t border-b dark:border-gray-600">
-											<h3 className="text-base font-semibold text-lightText dark:text-darkText lg:text-xl">
-												თქვენი საფულე
-											</h3>
-										</div>
-										<div className="p-3">
-											<div className="bg-indigo-100 dark:bg-darkCard w-full rounded-xl p-3">
-												<p className="text-md font-semibold text-lightText dark:text-darkText">დაკავშირებულია - {getChainName(chainId)} ქსელით</p>
-												<p className="text-lightText dark:text-darkText overflow-auto my-2 bg-white dark:bg-darkBackground rounded-lg p-2">{account}</p>
-												<div className="border-[1px] border-white dark:border-stone-700 w-full rounded-full mt-1 "></div>
-												<div className="flex justify-between text-lightText dark:text-darkText font-semibold mt-3">
-													<a href={getExplorerURL("wallet", account, chainId)} target="_blank" rel="noreferrer" className="flex items-center gap-1 duration-150 cursor-pointer"><FiExternalLink />ნახე Explorer-ზე</a>
-												</div>
-											</div>
-											<button onClick={() => disconnect()} className="bg-red-600 text-white font-semibold w-full rounded-lg py-2 mt-2 duration-150 hover:bg-red-700 border-[1px] border-red-700">გამოსვლა</button>
-										</div>
-									</div>
-								</Dialog.Panel>
-							</Transition.Child>
+			<Modal title='თქვენი საფულე' open={open} close={() => setOpen(!open)}>
+				<div className="p-3">
+					<div className="border border-indigo-200 dark:border-gray-400 w-full rounded-xl p-3">
+						<p className="text-sm font-semibold text-lightText dark:text-darkText">დაკავშირებულია - METAMASK</p>
+						<div className='flex items-center gap-2 py-3'>
+							<CgProfile className='text-4xl text-lightText dark:text-darkText' />
+							<p className="text-lightText dark:text-darkText uppercase font-bold">{shortAddress(account, 4)}</p>
+						</div>
+						<div className='flex items-center gap-3'>
+							<div className="flex items-center gap-1 text-lightText dark:text-darkText font-semibold">
+								<FiExternalLink className='mb-1' />
+								<a href={getExplorerURL("wallet", account, chainId)} target="_blank" rel="noreferrer" className="flex items-center gap-1 duration-150 cursor-pointer text-sm">ნახე EXPLORER-ზე</a>
+							</div>
+							<div onClick={() => navigator.clipboard.writeText(account)} className="flex items-center gap-1 text-lightText dark:text-darkText font-semibold cursor-pointer">
+								<FiCopy className='mb-1' />
+								<p className='text-sm text-lightText dark:text-darkText'>მისამართის კოპირება</p>
+							</div>
 						</div>
 					</div>
-				</Dialog>
-			</Transition.Root>
+					<div className='flex flex-row gap-2 justify-end mt-2'>
+						<button onClick={() => setOpen(!open)} className="duration-150 rounded-lg text-white p-2 font-semibold bg-gray-500 hover:bg-gray-700 hover:scale-95">დახურვა</button>
+						<button onClick={() => walletDisconnect()} className="duration-105 hover:scale-95 bg-red-600 text-white font-semibold rounded-lg py-2 duration-150 hover:bg-red-700 border-[1px] border-red-700 px-3">გამოსვლა</button>
+					</div>
+				</div>
+			</Modal>
 		</div>
 	);
 }

@@ -55,6 +55,7 @@ const Index = () => {
     if (active === true) {
       getUserBalance()
     }
+    // eslint-disable-next-line
   }, [active])
 
   return (

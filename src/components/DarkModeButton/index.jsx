@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md"
+import { MdDarkMode } from "react-icons/md"
 
 const Index = () => {
   const darkModeSet = localStorage.getItem("darkMode")
@@ -26,8 +26,8 @@ const Index = () => {
 
   return (
     <div>
-      <div onClick={() => setDarkMode()} className="duration-150 hover:scale-105 ml-2 bg-gradient-to-br from-violet to-violetDark bg-pos-0 hover:bg-pos-100 p-2 rounded-lg cursor-pointer">
-        {darkModeSet === "light" ? <MdOutlineDarkMode className='text-2xl text-white' /> : <MdDarkMode className='text-2xl text-white' />}
+      <div onClick={() => setDarkMode()} className="duration-150 hover:scale-95 ml-2 bg-gradient-to-br from-violet to-violetDark bg-pos-0 hover:bg-pos-100 p-2 rounded-lg cursor-pointer">
+        {darkModeSet === "light" ? <MdDarkMode className='text-2xl text-white' /> : <MdDarkMode className='text-2xl text-white' />}
       </div>
     </div>
   )
