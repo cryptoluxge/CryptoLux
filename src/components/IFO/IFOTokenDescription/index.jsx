@@ -92,7 +92,7 @@ const Index = () => {
                 {chainId === 56 ? (
                   <div>
                     {isApproved ? null : (
-                      <button id='approveButton' className='bg-gradient-to-br from-violet to-violetDark px-5 py-2 text-white rounded-lg duration-150 hover:scale-105' onClick={() => handleApprove()}>Approve ვაჭრობისთვის</button>
+                      <button id='approveButton' className='bg-gradient-to-br from-violet to-violetDark px-5 py-2 text-white rounded-lg duration-150 hover:scale-95' onClick={() => handleApprove()}>Approve ვაჭრობისთვის</button>
                     )}
                   </div>
                 ) : <WrongNetwork changeTo="BSC" text="გადართე BSC ქსელზე" />}
@@ -148,7 +148,7 @@ const Index = () => {
                 {chainId === 56 ? (
                   <div>
                     {isApproved ? null : (
-                      <button className='bg-gradient-to-br from-violet to-violetDark px-5 py-2 text-white rounded-lg duration-150 hover:scale-105' onClick={() => handleApprove()}>Approve ვაჭრობისთვის</button>
+                      <button className='bg-gradient-to-br from-violet to-violetDark px-5 py-2 text-white rounded-lg duration-150 hover:scale-95' onClick={() => handleApprove()}>Approve ვაჭრობისთვის</button>
                     )}
                   </div>
                 ) : <WrongNetwork changeTo="BSC" text="გადართე BSC ქსელზე" />}

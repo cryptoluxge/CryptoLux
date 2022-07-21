@@ -107,7 +107,7 @@ const Index = () => {
             <div>
               {chainId === 1 || chainId === 56 || chainId === 43114 ? (
                 <div>
-                  <button onClick={() => send()} type='button' className='w-full duration-150 hover:scale-105 bg-gradient-to-br from-violet to-violetDark bg-pos-0 hover:bg-pos-100 px-5 py-1 mt-2 rounded-lg text-white'>გაგზავნა</button>
+                  <button onClick={() => send()} type='button' className='w-full duration-150 hover:scale-95 bg-gradient-to-br from-violet to-violetDark bg-pos-0 hover:bg-pos-100 px-5 py-1 mt-2 rounded-lg text-white'>გაგზავნა</button>
                 </div>
               ) : (
                 <div className='flex justify-center mt-3'>

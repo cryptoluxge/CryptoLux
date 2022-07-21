@@ -19,7 +19,7 @@ const index = ({ name, social, description, link, logo }) => {
 				)}
 			<div className='flex justify-center'>
 				<a href={link} target="blank" className='w-full'>
-					<button className='w-full h-full py-2 bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-105 text-sm font-semibold'>გადასვლა</button>
+					<button className='w-full h-full py-2 bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-95 text-sm font-semibold'>გადასვლა</button>
 				</a>
 			</div>
 		</Card>

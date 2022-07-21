@@ -66,7 +66,7 @@ const HarvestButton = ({ poolAddress, name }) => {
             <div>
               {approved ? (
                 <div>
-                  <button onClick={() => harvestRewards()} className='duration-150 hover:scale-105 bg-gradient-to-br from-violet to-violetDark px-5 py-2 rounded-lg text-white font-semibold text-sm'>აღება</button>
+                  <button onClick={() => harvestRewards()} className='duration-150 hover:scale-95 bg-gradient-to-br from-violet to-violetDark px-5 py-2 rounded-lg text-white font-semibold text-sm'>აღება</button>
                 </div>
               ) : null}
             </div>

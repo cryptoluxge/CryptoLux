@@ -22,7 +22,7 @@ export const networks = [
         symbol: "BNB",
         explorer: "https://bscscan.com/",
         action: (
-            <button onClick={() => BNBChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-105 hover:bg-transparent text-sm font-semibold'>დამატება</button>
+            <button onClick={() => BNBChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-95 hover:bg-transparent text-sm font-semibold'>დამატება</button>
         )
     },
     {
@@ -34,7 +34,7 @@ export const networks = [
         symbol: "AVAX",
         explorer: "https://cchain.explorer.avax.network/",
         action: (
-            <button onClick={() => AvalancheChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-105 hover:bg-transparent text-sm font-semibold'>დამატება</button>
+            <button onClick={() => AvalancheChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-95 hover:bg-transparent text-sm font-semibold'>დამატება</button>
         )
     },
     {
@@ -46,7 +46,7 @@ export const networks = [
         symbol: "FTM",
         explorer: "https://ftmscan.com/",
         action: (
-            <button onClick={() => FantomChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-105 hover:bg-transparent text-sm font-semibold'>დამატება</button>
+            <button onClick={() => FantomChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-95 hover:bg-transparent text-sm font-semibold'>დამატება</button>
         )
     },
     {
@@ -58,7 +58,7 @@ export const networks = [
         symbol: "MATIC",
         explorer: "https://polygonscan.com/",
         action: (
-            <button onClick={() => PolygonChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-105 hover:bg-transparent text-sm font-semibold'>დამატება</button>
+            <button onClick={() => PolygonChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-95 hover:bg-transparent text-sm font-semibold'>დამატება</button>
         )
     },
     {
@@ -70,7 +70,7 @@ export const networks = [
         symbol: "CRO",
         explorer: "https://cronoscan.com",
         action: (
-            <button onClick={() => CronosChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-105 hover:bg-transparent text-sm font-semibold'>დამატება</button>
+            <button onClick={() => CronosChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-95 hover:bg-transparent text-sm font-semibold'>დამატება</button>
         )
     },
     {
@@ -82,7 +82,7 @@ export const networks = [
         symbol: "ETH",
         explorer: "https://arbiscan.io/",
         action: (
-            <button onClick={() => ArbitrumChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-105 hover:bg-transparent text-sm font-semibold'>დამატება</button>
+            <button onClick={() => ArbitrumChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-95 hover:bg-transparent text-sm font-semibold'>დამატება</button>
         )
 
     },
@@ -95,7 +95,7 @@ export const networks = [
         symbol: "ETH",
         explorer: "https://optimistic.etherscan.io/",
         action: (
-            <button onClick={() => OptimisticETHChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-105 hover:bg-transparent text-sm font-semibold'>დამატება</button>
+            <button onClick={() => OptimisticETHChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-95 hover:bg-transparent text-sm font-semibold'>დამატება</button>
         )
     },
     {
@@ -107,7 +107,7 @@ export const networks = [
         symbol: "ONE",
         explorer: "https://explorer.harmony.one/",
         action: (
-            <button onClick={() => HarmonyChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-105 hover:bg-transparent text-sm font-semibold'>დამატება</button>
+            <button onClick={() => HarmonyChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-95 hover:bg-transparent text-sm font-semibold'>დამატება</button>
         )
     },
     {
@@ -119,7 +119,7 @@ export const networks = [
         symbol: "OKT",
         explorer: "https://www.oklink.com/okexchain/",
         action: (
-            <button onClick={() => OKEXChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-105 hover:bg-transparent text-sm font-semibold'>დამატება</button>
+            <button onClick={() => OKEXChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-95 hover:bg-transparent text-sm font-semibold'>დამატება</button>
         )
     },
     {
@@ -131,7 +131,7 @@ export const networks = [
         symbol: "HT",
         explorer: "https://hecoinfo.com/",
         action: (
-            <button onClick={() => HecoChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-105 hover:bg-transparent text-sm font-semibold'>დამატება</button>
+            <button onClick={() => HecoChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-95 hover:bg-transparent text-sm font-semibold'>დამატება</button>
         )
     },
 
@@ -144,7 +144,7 @@ export const networks = [
         symbol: "VLX",
         explorer: "https://evmexplorer.velas.com",
         action: (
-            <button onClick={() => VelasChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-105 hover:bg-transparent text-sm font-semibold'>დამატება</button>
+            <button onClick={() => VelasChain()} className='w-full h-full py-[6px] bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-95 hover:bg-transparent text-sm font-semibold'>დამატება</button>
         )
     },
 ];

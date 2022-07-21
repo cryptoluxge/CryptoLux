@@ -14,7 +14,7 @@ const index = ({ name, category, description, link, logo }) => {
 			<p className='text-lightText dark:text-darkText py-3 text-sm'>{description}</p>
 			<div className='flex justify-center'>
 				<a href={link} target="blank" className='w-full'>
-					<button className='w-full h-full py-2 bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-105 text-sm font-semibold'>საიტის ნახვა</button>
+					<button className='w-full h-full py-2 bg-gradient-to-br from-violet to-violetDark text-white rounded-lg duration-150 hover:scale-95 text-sm font-semibold'>საიტის ნახვა</button>
 				</a>
 			</div>
 		</Card>

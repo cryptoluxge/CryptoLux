@@ -68,7 +68,7 @@ const DepositButton = ({ name, poolContract }) => {
 
   return (
     <div>
-      <button onClick={() => setIsOpen(!isOpen)} className='duration-150 hover:scale-105 bg-gradient-to-br from-violet to-violetDark px-5 py-2 rounded-lg text-white font-semibold text-sm'>-</button>
+      <button onClick={() => setIsOpen(!isOpen)} className='duration-150 hover:scale-95 bg-gradient-to-br from-violet to-violetDark px-5 py-2 rounded-lg text-white font-semibold text-sm'>-</button>
       <Transition.Root show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setIsOpen}>
           <Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0" enterTo="opacity-100" leave="ease-in duration-200" leaveFrom="opacity-100" leaveTo="opacity-0">
@@ -101,8 +101,8 @@ const DepositButton = ({ name, poolContract }) => {
                       </div>
                       <div className='border-[1px] rounded-full border-gray-200 dark:border-neutral-800'></div>
                       <div className='flex justify-end mt-3 gap-3'>
-                        <button className='bg-gradient-to-br from-violet to-violetDark text-white px-5 py-2 rounded-lg duration-150 hover:scale-105' onClick={() => setIsOpen(!isOpen)}>დახურვა</button>
-                        <button className='bg-gradient-to-br from-violet to-violetDark text-white px-5 py-2 rounded-lg duration-150 hover:scale-105' onClick={() => withdrawFromPool()}>გამოტანა</button>
+                        <button className='bg-gradient-to-br from-violet to-violetDark text-white px-5 py-2 rounded-lg duration-150 hover:scale-95' onClick={() => setIsOpen(!isOpen)}>დახურვა</button>
+                        <button className='bg-gradient-to-br from-violet to-violetDark text-white px-5 py-2 rounded-lg duration-150 hover:scale-95' onClick={() => withdrawFromPool()}>გამოტანა</button>
                       </div>
                     </div>
                   </div>

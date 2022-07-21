@@ -108,13 +108,13 @@ const Index = () => {
                         <div>
                           {userData.isLocked ? null : (
                             <div className='flex items-center gap-2'>
-                              <button className='bg-gradient-to-br from-violet to-violetDark duration-150 hover:scale-105 font-semibold px-5 py-2 rounded-lg text-white text-sm text-medium'>შეტანა</button>
-                              <button className='bg-gradient-to-br from-violet to-violetDark duration-150 hover:scale-105 font-semibold px-5 py-2 rounded-lg text-white text-sm text-medium'>გამოტანა</button>
+                              <button className='bg-gradient-to-br from-violet to-violetDark duration-150 hover:scale-95 font-semibold px-5 py-2 rounded-lg text-white text-sm text-medium'>შეტანა</button>
+                              <button className='bg-gradient-to-br from-violet to-violetDark duration-150 hover:scale-95 font-semibold px-5 py-2 rounded-lg text-white text-sm text-medium'>გამოტანა</button>
                             </div>
                           )}
                         </div>
                       ) : (
-                        <button className='bg-gradient-to-br from-violet to-violetDark duration-150 hover:scale-105 font-semibold px-5 py-2 rounded-lg text-white text-sm text-medium'>Enable</button>
+                        <button className='bg-gradient-to-br from-violet to-violetDark duration-150 hover:scale-95 font-semibold px-5 py-2 rounded-lg text-white text-sm text-medium'>Enable</button>
                       )}
                     </div>
                   ) : (
@@ -185,13 +185,13 @@ const Index = () => {
                         <div>
                           {userData.isLocked ? null : (
                             <div className='flex items-center gap-2'>
-                              <button className='bg-gradient-to-br from-violet to-violetDark duration-150 hover:scale-105 font-semibold px-5 py-2 rounded-lg text-white text-sm text-medium'>შეტანა</button>
-                              <button className='bg-gradient-to-br from-violet to-violetDark duration-150 hover:scale-105 font-semibold px-5 py-2 rounded-lg text-white text-sm text-medium'>გამოტანა</button>
+                              <button className='bg-gradient-to-br from-violet to-violetDark duration-150 hover:scale-95 font-semibold px-5 py-2 rounded-lg text-white text-sm text-medium'>შეტანა</button>
+                              <button className='bg-gradient-to-br from-violet to-violetDark duration-150 hover:scale-95 font-semibold px-5 py-2 rounded-lg text-white text-sm text-medium'>გამოტანა</button>
                             </div>
                           )}
                         </div>
                       ) : (
-                        <button className='bg-gradient-to-br from-violet to-violetDark duration-150 hover:scale-105 font-semibold px-5 py-2 rounded-lg text-white text-sm text-medium'>Enable</button>
+                        <button className='bg-gradient-to-br from-violet to-violetDark duration-150 hover:scale-95 font-semibold px-5 py-2 rounded-lg text-white text-sm text-medium'>Enable</button>
                       )}
                     </div>
                   ) : (

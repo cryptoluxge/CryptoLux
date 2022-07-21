@@ -62,7 +62,7 @@ const DepositCAKE = ({ poolType }) => {
 
   return (
     <div>
-      <button onClick={() => setIsOpen(!isOpen)} className='bg-gradient-to-br from-violet to-violetDark rounded-md px-5 py-1 w-full text-white duration-150 hover:scale-105'>
+      <button onClick={() => setIsOpen(!isOpen)} className='bg-gradient-to-br from-violet to-violetDark rounded-md px-5 py-1 w-full text-white duration-150 hover:scale-95'>
         შეტანა
       </button>
       <Transition.Root show={isOpen} as={Fragment}>
@@ -101,8 +101,8 @@ const DepositCAKE = ({ poolType }) => {
                       </div>
                       <div className='border-[1px] rounded-full border-gray-200 dark:border-neutral-800'></div>
                       <div className='flex justify-end mt-3 gap-3'>
-                        <button className='bg-gradient-to-br from-violet to-violetDark text-white px-5 py-2 rounded-lg duration-150 hover:scale-105' onClick={() => setIsOpen(!isOpen)}>დახურვა</button>
-                        <button className='bg-gradient-to-br from-violet to-violetDark text-white px-5 py-2 rounded-lg duration-150 hover:scale-105' onClick={() => depositInPool()}>შეტანა</button>
+                        <button className='bg-gradient-to-br from-violet to-violetDark text-white px-5 py-2 rounded-lg duration-150 hover:scale-95' onClick={() => setIsOpen(!isOpen)}>დახურვა</button>
+                        <button className='bg-gradient-to-br from-violet to-violetDark text-white px-5 py-2 rounded-lg duration-150 hover:scale-95' onClick={() => depositInPool()}>შეტანა</button>
                       </div>
                     </div>
                   </div>

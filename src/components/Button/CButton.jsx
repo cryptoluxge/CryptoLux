@@ -5,9 +5,9 @@ const CButton = ({ color, textColor, contained, children, ...rest }) => {
 	return (
 		<div>{
 			contained ?
-				(<button {...rest} className={`border-2 border-${color} px-4 py-2 text-${textColor} rounded-lg duration-150 hover:scale-105 hover:bg-${color} shadow-lg hover:shadow-${color}/40`}>{children}</button>)
+				(<button {...rest} className={`border-2 border-${color} px-4 py-2 text-${textColor} rounded-lg duration-150 hover:scale-95 hover:bg-${color} shadow-lg hover:shadow-${color}/40`}>{children}</button>)
 				:
-				(<button {...rest} className={`bg-${color} px-4 py-2 text-${textColor} rounded-lg duration-150 hover:scale-105 shadow-lg hover:shadow-${color}/40`}>{children}</button>)}
+				(<button {...rest} className={`bg-${color} px-4 py-2 text-${textColor} rounded-lg duration-150 hover:scale-95 shadow-lg hover:shadow-${color}/40`}>{children}</button>)}
 		</div>
 	)
 }

@@ -28,7 +28,7 @@ const ApproveIFO = () => {
 
   return (
     <div>
-      <button onClick={() => handleApprove()} className='bg-gradient-to-br from-violet to-violetDark rounded-md px-5 py-1 w-full text-white duration-150 hover:scale-105'>
+      <button onClick={() => handleApprove()} className='bg-gradient-to-br from-violet to-violetDark rounded-md px-5 py-1 w-full text-white duration-150 hover:scale-95'>
         Enable
       </button>
     </div>

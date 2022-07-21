@@ -13,7 +13,7 @@ const HarvestTokens = ({ poolType }) => {
 
   return (
     <div>
-      <button onClick={() => harvestTokens()} className='bg-gradient-to-br from-violet to-violetDark rounded-md px-5 py-1 w-full text-white duration-150 hover:scale-105'>
+      <button onClick={() => harvestTokens()} className='bg-gradient-to-br from-violet to-violetDark rounded-md px-5 py-1 w-full text-white duration-150 hover:scale-95'>
         გამოტანა
       </button>
     </div>
