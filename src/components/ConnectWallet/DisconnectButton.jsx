@@ -52,8 +52,8 @@ export default function DisconnectButton() {
 						</div>
 					</div>
 					<div className='flex flex-row gap-2 justify-end mt-2'>
-						<button onClick={() => setOpen(!open)} className="duration-150 rounded-lg text-white p-2 font-semibold bg-gray-500 hover:bg-gray-700 hover:scale-95">დახურვა</button>
-						<button onClick={() => walletDisconnect()} className="duration-105 hover:scale-95 bg-red-600 text-white font-semibold rounded-lg py-2 duration-150 hover:bg-red-700 border-[1px] border-red-700 px-3">გამოსვლა</button>
+						<button onClick={() => setOpen(!open)} className="duration-150 rounded-lg text-white p-2  bg-gray-500 hover:bg-gray-700 hover:scale-95 text-sm">დახურვა</button>
+						<button onClick={() => walletDisconnect()} className="duration-105 hover:scale-95 bg-red-600 text-white  rounded-lg py-2 duration-150 hover:bg-red-700 border-[1px] border-red-700 px-3 text-sm">გამოსვლა</button>
 					</div>
 				</div>
 			</Modal>

@@ -21,7 +21,9 @@ const WrongNetwork = ({ changeTo, text }) => {
 
   return (
     <div>
-      <button onClick={() => changeNetwork(changeTo)} className='bg-red-600 shadow-lg shadow-red-800 text-white text-sm font-semibold px-2 py-2 rounded-lg flex items-center gap-1 duration-150 hover:scale-95'><AiFillWarning className='text-lg' />{text}</button>
+      <button onClick={() => changeNetwork(changeTo)} className='bg-red-600 text-white text-sm font-semibold px-2 py-2 rounded-lg flex items-center gap-1 duration-150 hover:scale-95'>
+        <AiFillWarning className='text-lg' />{text}
+      </button>
     </div>
   )
 }
