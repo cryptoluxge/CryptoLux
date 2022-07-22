@@ -6,6 +6,8 @@ import Web3 from 'web3'
 import ConnectButton from '../../../components/ConnectWallet/ConnectButton'
 import ChangeNetwork from '../../../components/ConnectWallet/WrongNetwork'
 import { useWeb3React } from '@web3-react/core'
+import { getChainName } from '../../../utils/WalletHelpers'
+import { FaQuestion } from 'react-icons/fa'
 
 const Index = () => {
   const { account, chainId, active } = useWeb3React()
@@ -53,6 +55,8 @@ const Index = () => {
 
   useEffect(() => {
     if (active === true) {
+      document.getElementById('sentNativeAmount').removeAttribute('disabled', true)
+      document.getElementById('reciverAddressNative').removeAttribute('disabled', true)
       getUserBalance()
     }
     // eslint-disable-next-line
@@ -62,47 +66,51 @@ const Index = () => {
     <div >
       <div className='bg-white dark:bg-darkCard rounded-lg p-3'>
         <div className='flex flex-col items-center justify-center'>
-          {chainId === 56 ? (
-            <div className='w-[42px] h-[42px] bg-yellow-500 rounded-lg flex justify-center'>
-              <img src={BSC} alt="" className='w-8' />
+          {chainId === 56 || chainId === 1 || chainId === 43114 ? (
+            <div>
+              {chainId === 56 ? (
+                <div className='w-[42px] h-[42px] bg-yellow-500 rounded-lg flex justify-center'>
+                  <img src={BSC} alt="" className='w-8' />
+                </div>
+              ) : null}
+              {chainId === 1 ? (
+                <div className='w-[42px] h-[42px] bg-blue-500 rounded-lg flex justify-center'>
+                  <img src={ETH} alt="" className='w-5' />
+                </div>
+              ) : null}
+              {chainId === 43114 ? (
+                <div className='w-[42px] h-[42px] bg-red-500 rounded-lg flex justify-center'>
+                  <img src={AVAX} alt="" className='w-6' />
+                </div>
+              ) : null}
             </div>
-          ) : null}
-          {chainId === 1 ? (
-            <div className='w-[42px] h-[42px] bg-blue-500 rounded-lg flex justify-center'>
-              <img src={ETH} alt="" className='w-5' />
+          ) : (
+            <div className='w-[42px] h-[42px] bg-red-500 rounded-lg flex justify-center items-center'>
+              <FaQuestion className='text-white text-2xl' />
             </div>
-          ) : null}
-          {chainId === 43114 ? (
-            <div className='w-[42px] h-[42px] bg-red-500 rounded-lg flex justify-center'>
-              <img src={AVAX} alt="" className='w-6' />
-            </div>
-          ) : null}
-          {chainId === 56 ? (
-            <p className='text-lightText dark:text-darkText font-bold mt-2'>BNB</p>
-          ) : null}
-          {chainId === 1 ? (
-            <p className='text-lightText dark:text-darkText font-bold mt-2'>ETH</p>
-          ) : null}
-          {chainId === 43114 ? (
-            <p className='text-lightText dark:text-darkText font-bold mt-2'>AVAX</p>
+          )}
+          {active ? (
+            <p className='text-lightText dark:text-darkText font-bold mt-2'>{getChainName(chainId)}</p>
           ) : null}
         </div>
         <div className='border-[1px] border-gray-200 dark:border-gray-500 mt-3 mb-3'></div>
         <div>
           <div className='flex justify-between items-center mt-5'>
             <p className='text-lightText dark:text-darkText font-bold'>ბალანსი:</p>
-            <p className='text-lightText dark:text-darkText font-bold'>{Number(userBalance).toFixed(5)}</p>
+            <p className='text-lightText dark:text-darkText font-bold'>{active ? `${Number(userBalance).toFixed(5)}` : '0.00'}</p>
           </div>
         </div>
         <div className='mt-2'>
           <p className='text-lightText dark:text-darkText font-bold'>გაგზავნა:</p>
           <div className='flex items-center gap-2 mt-1'>
-            <input id='sentNativeAmount' type="text" className='w-full rounded-lg bg-indigo-50 border border-indigo-300 dark:border-neutral-700 dark:bg-darkBackground text-lightText dark:text-white p-2' placeholder='რაოდენობა' />
-            <div onClick={() => setMAX()} className='bg-gradient-to-br from-violet to-violetDark rounded-lg px-2 py-2 flex items-center justify-center'>
-              <p className='text-white font-bold cursor-pointer'>MAX</p>
-            </div>
+            <input disabled id='sentNativeAmount' type="text" className='w-full rounded-lg bg-indigo-50 border border-indigo-300 dark:border-neutral-700 dark:bg-darkBackground text-lightText dark:text-white p-2' placeholder='რაოდენობა' />
+            {active ? (
+              <div onClick={() => setMAX()} className='bg-gradient-to-br from-violet to-violetDark rounded-lg px-2 py-2 flex items-center justify-center'>
+                <p className='text-white font-bold cursor-pointer'>MAX</p>
+              </div>
+            ) : null}
           </div>
-          <input id='reciverAddressNative' type="text" className='w-full mt-2 rounded-lg bg-indigo-50 border border-indigo-300 dark:border-neutral-700 dark:bg-darkBackground text-lightText dark:text-white p-2' placeholder='მიმღების მისამართი' />
+          <input disabled id='reciverAddressNative' type="text" className='w-full mt-2 rounded-lg bg-indigo-50 border border-indigo-300 dark:border-neutral-700 dark:bg-darkBackground text-lightText dark:text-white p-2' placeholder='მიმღების მისამართი' />
           {active === true ? (
             <div>
               {chainId === 1 || chainId === 56 || chainId === 43114 ? (
@@ -116,7 +124,7 @@ const Index = () => {
               )}
             </div>
           ) : (
-            <div className='flex justify-center mt-3'>
+            <div className='flex justify-center mt-3 w-full'>
               <ConnectButton text='დააკავშირეთ საფულე' />
             </div>
           )}

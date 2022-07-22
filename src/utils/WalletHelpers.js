@@ -28,6 +28,8 @@ export const getChainName = (chainId) => {
       return "BSC"
     case 43114:
       return "AVAX"
+    default:
+      return "Wrong Network"
   }
 }
 

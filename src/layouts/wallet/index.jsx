@@ -98,11 +98,9 @@ const Index = () => {
     <div>
       <div className='mt-5'>
         <div className='hidden md:flex justify-center gap-4'>
-          {active ? (
-            <div className='w-[280px]'>
-              <NativeCoinSend />
-            </div>
-          ) : null}
+          <div className='w-[280px]'>
+            <NativeCoinSend />
+          </div>
           <div className='bg-white dark:bg-darkCard rounded-lg w-[850px]'>
             <p className='p-3 text-lightText dark:text-darkText'>ტოკენების ბალანსი</p>
             <Tab.Group>
