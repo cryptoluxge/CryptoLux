@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Card from "../../../../../Cards/Card"
 import Buttons from './Buttons'
+import Skelaton from '../../../../../Skelaton'
 import Web3 from 'web3'
 import { ifo } from '../../../../../../config/PancakeSwap/constants/ifo'
 import { getVaultUserData } from '../../../../../../utils/BNBChain/PancakeSwapHelpers/Helpers'
@@ -66,7 +67,9 @@ const Index = () => {
         <div className='p-3'>
           <div className='flex justify-between text-lightText dark:text-darkText font-semibold'>
             <p>შესასვლელად:</p>
-            <p>{Number(userICAKE).toFixed(4)} (${Number(userICAKEUSD).toLocaleString("en-US")})</p>
+            {Number(userICAKE) >= 0 ? (
+              <p>{Number(userICAKE).toFixed(4)} (${Number(userICAKEUSD).toLocaleString("en-US")})</p>
+            ) : <Skelaton />}
           </div>
           <div className='flex justify-between text-lightText dark:text-darkText font-semibold'>
             <p>ასაგროვებელი:</p>

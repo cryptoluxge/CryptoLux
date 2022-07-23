@@ -8,6 +8,7 @@ import { MdOpenInNew } from "react-icons/md"
 import { BsFillArrowDownCircleFill, BsFillArrowUpCircleFill } from "react-icons/bs"
 import { AiFillInfoCircle } from "react-icons/ai"
 import { useWeb3React } from '@web3-react/core'
+import Skelaton from '../../../Skelaton'
 
 const Index = () => {
   const { account, active, chainId } = useWeb3React()
@@ -78,15 +79,21 @@ const Index = () => {
               <div className='p-3 flex flex-col space-y-3'>
                 <div className='text-lightText dark:text-darkText'>
                   <p>{userData.isLocked ? "დალუქული" : "შეტანილი"} CAKE</p>
-                  <p className='font-semibold'>{Number(userData.cakeAmount).toFixed(4)}</p>
+                  {Number(userData.cakeAmount) >= 0 ? (
+                    <p className='font-semibold'>{Number(userData.cakeAmount).toFixed(4)}</p>
+                  ) : <Skelaton width='14' />}
                 </div>
                 <div className='text-lightText dark:text-darkText'>
                   <p>დაგროვებული</p>
-                  <p className='font-semibold'>{Number(userData.pendingAmount).toFixed(4)}</p>
+                  {Number(userData.pendingAmount) >= 0 ? (
+                    <p className='font-semibold'>{Number(userData.pendingAmount).toFixed(4)}</p>
+                  ) : <Skelaton width='14' />}
                 </div>
                 <div className='text-lightText dark:text-darkText'>
                   <p>iCAKE</p>
-                  <p className='font-semibold'>{Number(userData.depositedCake).toFixed(4)}</p>
+                  {Number(userData.depositedCake) >= 0 ? (
+                    <p className='font-semibold'>{Number(userData.depositedCake).toFixed(4)}</p>
+                  ) : <Skelaton width='14' />}
                 </div>
                 {userData.isLocked ? (
                   <div className='text-lightText dark:text-darkText'>
@@ -129,11 +136,15 @@ const Index = () => {
             <div className='border-[1px] border-lightText dark:border-darkText rounded-lg mb-3'></div>
             <div className='flex justify-between text-lightText dark:text-darkText'>
               <p className='font-semibold'>Total Staked:</p>
-              <p>{Number(totalCakeStaked).toLocaleString("en-US")}</p>
+              {Number(totalCakeStaked) > 0 ? (
+                <p>{Number(totalCakeStaked).toLocaleString("en-US")}</p>
+              ) : <Skelaton width='14' />}
             </div>
             <div className='flex justify-between text-lightText dark:text-darkText'>
               <p className='font-semibold'>Total Locked:</p>
-              <p>{Number(totalCakeLocked).toLocaleString("en-US")}</p>
+              {Number(totalCakeLocked) > 0 ? (
+                <p>{Number(totalCakeLocked).toLocaleString("en-US")}</p>
+              ) : <Skelaton width='14' />}
             </div>
             <a href='https://bscscan.com/address/0x45c54210128a065de780C4B0Df3d16664f7f859e' rel="noreferrer" target="_blank" className='mt-2 flex justify-end text-lightText dark:text-darkText items-center'>
               <p className='font-semibold text-sm'>ნახე კონტრაქტი</p>
@@ -155,15 +166,21 @@ const Index = () => {
               <div className='p-3 flex flex-col space-y-3'>
                 <div className='text-lightText dark:text-darkText'>
                   <p>{userData.isLocked ? "დალუქული" : "შეტანილი"} CAKE</p>
-                  <p className='font-semibold'>{Number(userData.cakeAmount).toFixed(4)}</p>
+                  {Number(userData.cakeAmount) >= 0 ? (
+                    <p className='font-semibold'>{Number(userData.cakeAmount).toFixed(4)}</p>
+                  ) : <Skelaton width='14' />}
                 </div>
                 <div className='text-lightText dark:text-darkText'>
                   <p>დაგროვებული</p>
-                  <p className='font-semibold'>{Number(userData.pendingAmount).toFixed(4)}</p>
+                  {Number(userData.pendingAmount) >= 0 ? (
+                    <p className='font-semibold'>{Number(userData.pendingAmount).toFixed(4)}</p>
+                  ) : <Skelaton width='14' />}
                 </div>
                 <div className='text-lightText dark:text-darkText'>
                   <p>iCAKE</p>
-                  <p className='font-semibold'>{Number(userData.depositedCake).toFixed(4)}</p>
+                  {Number(userData.depositedCake) >= 0 ? (
+                    <p className='font-semibold'>{Number(userData.depositedCake).toFixed(4)}</p>
+                  ) : <Skelaton width='14' />}
                 </div>
                 {userData.isLocked ? (
                   <div className='text-lightText dark:text-darkText'>

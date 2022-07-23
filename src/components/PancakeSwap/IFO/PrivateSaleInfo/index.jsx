@@ -5,6 +5,7 @@ import { ifo } from '../../../../config/PancakeSwap/constants/ifo'
 import { useCakePrice } from '../../../../hooks/useDexTokenPrices'
 import { getIfoPoolContract } from '../../../../utils/BNBChain/PancakeSwapHelpers/contractHelpers'
 import getSquadUsers from "./getSquadUsers"
+import Skelaton from '../../../Skelaton'
 import Card from "../../../Cards/Card"
 import { useWeb3React } from '@web3-react/core'
 import Web3 from 'web3'
@@ -81,20 +82,25 @@ const Index = () => {
         <div className='p-3 space-y-5'>
           <div className='text-lightText dark:text-darkText'>
             <p>აგროვდება</p>
-            <p className='font-semibold'>
-              {Number(ifAllUserParticipatedRaised) > 0 ? `$${ifAllUserParticipatedRaised.toLocaleString("en-US")}` : 0}
-            </p>
+            {Number(ifAllUserParticipatedRaised) >= 0 ? (
+              <p className='font-semibold'>
+                {Number(ifAllUserParticipatedRaised) > 0 ? `$${ifAllUserParticipatedRaised.toLocaleString("en-US")}` : 0}
+              </p>
+            ) : <Skelaton />}
           </div>
           <div className='text-lightText dark:text-darkText'>
             <p>თითოს შეხვდება</p>
-            <p className='font-semibold'>
-              {Number(eachTokensForAllUsers) > 0 ? ` ~${eachTokensForAllUsers.toLocaleString("en-US")} ${ifo.tokenDetails.symbol} ($${eachTokensForAllUsersPrice.toLocaleString("en-US")})` : `0.00 ${ifo.tokenDetails.symbol}`}
-            </p>
+            {Number(eachTokensForAllUsers) >= 0 ? (
+              <p className='font-semibold'>
+                {Number(eachTokensForAllUsers) > 0 ? ` ~${eachTokensForAllUsers.toLocaleString("en-US")} ${ifo.tokenDetails.symbol} ($${eachTokensForAllUsersPrice.toLocaleString("en-US")})` : `0.00 ${ifo.tokenDetails.symbol}`}
+              </p>
+            ) : <Skelaton />}
           </div>
           <div className='text-lightText dark:text-darkText'>
             <p>Overflow იქნება</p>
-            <p className='font-semibold'>{Number(overflowIfAllUserParticipatd) > 1 ? ` ~${overflowIfAllUserParticipatd.toLocaleString("en-US")}%` : `0.00%`}
-            </p>
+            {Number(overflowIfAllUserParticipatd) >= 0 ? (
+              <p className='font-semibold'>{Number(overflowIfAllUserParticipatd) > 1 ? ` ~${overflowIfAllUserParticipatd.toLocaleString("en-US")}%` : `0.00%`}</p>
+            ) : <Skelaton />}
           </div>
           <div className='text-lightText dark:text-darkText'>
             <p>დაგიბრუნდებათ</p>
@@ -102,7 +108,9 @@ const Index = () => {
           </div>
           <div className='text-lightText dark:text-darkText'>
             <p>იუზერები Squad-ით</p>
-            <p className='font-semibold'>{Number(squadUsers) > 0 ? squadUsers : 0}</p>
+            {Number(squadUsers) >= 0 ? (
+              <p className='font-semibold'>{Number(squadUsers) > 0 ? squadUsers : 0}</p>
+            ) : <Skelaton />}
           </div>
         </div>
       </div>
@@ -117,20 +125,25 @@ const Index = () => {
           <div className='p-3 space-y-5'>
             <div className='text-lightText dark:text-darkText'>
               <p>აგროვდება</p>
-              <p className='font-semibold'>
-                {Number(ifAllUserParticipatedRaised) > 0 ? `$${ifAllUserParticipatedRaised.toLocaleString("en-US")}` : 0}
-              </p>
+              {Number(ifAllUserParticipatedRaised) >= 0 ? (
+                <p className='font-semibold'>
+                  {Number(ifAllUserParticipatedRaised) > 0 ? `$${ifAllUserParticipatedRaised.toLocaleString("en-US")}` : 0}
+                </p>
+              ) : <Skelaton />}
             </div>
             <div className='text-lightText dark:text-darkText'>
               <p>თითოს შეხვდება</p>
-              <p className='font-semibold'>
-                {Number(eachTokensForAllUsers) > 0 ? ` ~${eachTokensForAllUsers.toLocaleString("en-US")} ${ifo.tokenDetails.symbol} ($${eachTokensForAllUsersPrice.toLocaleString("en-US")})` : `0.00 ${ifo.tokenDetails.symbol}`}
-              </p>
+              {Number(eachTokensForAllUsers) >= 0 ? (
+                <p className='font-semibold'>
+                  {Number(eachTokensForAllUsers) > 0 ? ` ~${eachTokensForAllUsers.toLocaleString("en-US")} ${ifo.tokenDetails.symbol} ($${eachTokensForAllUsersPrice.toLocaleString("en-US")})` : `0.00 ${ifo.tokenDetails.symbol}`}
+                </p>
+              ) : <Skelaton />}
             </div>
             <div className='text-lightText dark:text-darkText'>
               <p>Overflow იქნება</p>
-              <p className='font-semibold'>{Number(overflowIfAllUserParticipatd) > 1 ? ` ~${overflowIfAllUserParticipatd.toLocaleString("en-US")}%` : `0.00%`}
-              </p>
+              {Number(overflowIfAllUserParticipatd) >= 0 ? (
+                <p className='font-semibold'>{Number(overflowIfAllUserParticipatd) > 1 ? ` ~${overflowIfAllUserParticipatd.toLocaleString("en-US")}%` : `0.00%`}</p>
+              ) : <Skelaton />}
             </div>
             <div className='text-lightText dark:text-darkText'>
               <p>დაგიბრუნდებათ</p>
@@ -138,7 +151,9 @@ const Index = () => {
             </div>
             <div className='text-lightText dark:text-darkText'>
               <p>იუზერები Squad-ით</p>
-              <p className='font-semibold'>{Number(squadUsers) > 0 ? squadUsers : 0}</p>
+              {Number(squadUsers) >= 0 ? (
+                <p className='font-semibold'>{Number(squadUsers) > 0 ? squadUsers : 0}</p>
+              ) : <Skelaton />}
             </div>
           </div>
         </div>
