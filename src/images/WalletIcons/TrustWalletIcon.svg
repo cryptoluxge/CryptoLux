@@ -1,9 +1,4 @@
-<svg width="22" height="23" viewBox="0 0 64 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M32.3999 64C50.073 64 64.3999 49.6731 64.3999 32C64.3999 14.3269 50.073 0 32.3999 0C14.7268 0 0.399902 14.3269 0.399902 32C0.399902 49.6731 14.7268 64 32.3999 64Z" fill="#3375BB"/>
-  <path d="M32.6267 14C38.9508 19.2816 46.2029 18.9559 48.275 18.9559C47.8217 48.9937 44.3683 43.0373 32.6267 51.46C20.8851 43.0373 17.4533 48.9937 17 18.9559C19.0505 18.9559 26.3026 19.2816 32.6267 14Z" stroke="white" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-  <defs>
-    <clipPath id="clip0">
-      <rect width="64" height="64" fill="white" transform="translate(0.399902)"/>
-    </clipPath>
-  </defs>
+<svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="26.5" cy="26.5" r="26.5" fill="white"/>
+<path d="M26.4914 10C31.5466 14.6528 37.3436 14.3658 39 14.3658C38.6376 40.8273 35.8771 35.5801 26.4914 43C17.1056 35.5801 14.3624 40.8273 14 14.3658C15.6391 14.3658 21.4361 14.6528 26.4914 10Z" stroke="#3375BB" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

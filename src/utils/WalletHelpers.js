@@ -40,16 +40,19 @@ export const getChainFullName = (chainId) => {
       return <div className="flex flex-row items-center gap-2">
         <img src={ETH} alt='eth' className='w-3' />
         <p className="font-semibold text-sm hidden md:flex">Ethereum</p>
+        <p className="font-semibold text-sm flex md:hidden">ETH</p>
       </div>
     case 56:
       return <div className="flex flex-row items-center gap-2">
         <img src={BSC} alt='bsc' className='w-4' />
         <p className="font-semibold text-sm hidden md:flex">Smart Chain</p>
+        <p className="font-semibold text-sm flex md:hidden">BSC</p>
       </div>
     case 43114:
       return <div className="flex flex-row items-center gap-2">
         <img src={AVAX} alt='avax' className='w-4' />
         <p className="font-semibold text-sm hidden md:flex">Avalanche</p>
+        <p className="font-semibold text-sm flex md:hidden">AVAX</p>
       </div>
   }
 }

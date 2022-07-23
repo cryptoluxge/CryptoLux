@@ -21,24 +21,22 @@ const Index = ({ children }) => {
 				leave="transition ease-in-out duration-300 transform"
 				leaveFrom="translate-x-0"
 				leaveTo="-translate-x-full">
-				<div className=''>
-					<div className='z-10 inset-0 w-[250px] p-3 mt-[-50px] bg-lightBackground dark:bg-darkBackground rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 shadow'>
-						<div className='flex items-center justify-between'>
-							<a href="/">
-								<div className='flex items-center space-x-3 cursor-pointer'>
-									<img src={Logo} alt="კრიპტოლუქსის ლოგო" className='w-9' />
-									<p className='text-lightText dark:text-darkText text-sm font-semibold'>კრიპტოლუქსი</p>
-								</div>
-							</a>
-							<div className='duration-75 hover:bg-white  rounded-lg p-3' onClick={() => setIsOpen(!isOpen)}>
-								<AiOutlineClose className='text-lightText dark:text-darkText text-xl cursor-pointer' />
+				<div className='z-10 inset-0 w-[250px] p-3 mt-[-50px] bg-lightBackground dark:bg-darkBackground rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 shadow'>
+					<div className='flex items-center justify-between'>
+						<a href="/">
+							<div className='flex items-center space-x-3 cursor-pointer'>
+								<img src={Logo} alt="კრიპტოლუქსის ლოგო" className='w-9' />
+								<p className='text-lightText dark:text-darkText text-sm font-semibold'>კრიპტოლუქსი</p>
 							</div>
+						</a>
+						<div className='duration-75 hover:bg-primary rounded-lg p-3 cursor-pointer' onClick={() => setIsOpen(!isOpen)}>
+							<AiOutlineClose className='group group-hover:text-white text-lightText dark:text-white text-xl' />
 						</div>
-						<div className='border-[1px] rounded-full w-full mt-3 border-primary shadow-xl shadow-primary'></div>
-						<div className='h-screen overflow-y-auto' >
-							<div className='mt-3'>
-								<SidenavItem menuItem={menuItem} />
-							</div>
+					</div>
+					<div className='border-[1px] rounded-full w-full mt-3 border-primary shadow-xl shadow-primary'></div>
+					<div className='h-screen overflow-y-auto' >
+						<div className='mt-3'>
+							<SidenavItem menuItem={menuItem} />
 						</div>
 					</div>
 				</div>
@@ -60,12 +58,12 @@ const Index = ({ children }) => {
 					<div className='flex justify-between md:justify-end'>
 						<div className='flex md:hidden'>
 							{isOpen ? (
-								<div className='duration-150 dark:hover:bg-primary rounded-lg p-3 cursor-pointer' onClick={() => setIsOpen(!isOpen)}>
+								<div className='duration-150 hover:bg-primary rounded-lg p-3 cursor-pointer' onClick={() => setIsOpen(!isOpen)}>
 									<AiOutlineClose className='text-lightText dark:text-darkText text-xl ' />
 								</div>
 							) : (
-								<div className='duration-150 dark:hover:bg-primary rounded-lg group p-3 cursor-pointer' onClick={() => setIsOpen(!isOpen)}>
-									<GiHamburgerMenu className='text-lightText dark:text-darkText dark:hover:text-white text-xl ' />
+								<div className='duration-150 hover:bg-primary rounded-lg group p-3 cursor-pointer' onClick={() => setIsOpen(!isOpen)}>
+									<GiHamburgerMenu className='group group-hover:text-white text-lightText dark:text-white text-xl' />
 								</div>
 							)}
 						</div>

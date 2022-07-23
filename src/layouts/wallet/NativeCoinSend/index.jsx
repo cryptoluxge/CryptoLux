@@ -55,8 +55,8 @@ const Index = () => {
 
   useEffect(() => {
     if (active === true) {
-      document.getElementById('sentNativeAmount').removeAttribute('disabled', true)
-      document.getElementById('reciverAddressNative').removeAttribute('disabled', true)
+      document.getElementById('sentNativeAmount').removeAttribute('disabled')
+      document.getElementById('reciverAddressNative').removeAttribute('disabled')
       getUserBalance()
     }
     // eslint-disable-next-line

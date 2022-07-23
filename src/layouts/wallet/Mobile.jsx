@@ -276,7 +276,7 @@ const Index = () => {
         </Tab.Group>
       </div>
       <Modal title='ტოკენის გაგზავნა' open={modalOpen} close={() => setModalOpen(!modalOpen)}>
-        <div className='p-3'>
+        <div className='px-3'>
           <p className='text-lightText dark:text-darkText'><span className='font-bold text-sm'>სახელი:</span> {token.name} ({token.symbol})</p>
           <p className='text-lightText dark:text-darkText'><span className='font-bold text-sm'>ბალანსი:</span> {token.balance}</p>
           <p className='text-lightText dark:text-darkText'><span className='font-bold text-sm'>კონტრაქტი:</span> <a href={`https://bscscan.com/address/${token.address}`} target='_blank' rel="noreferrer" className='text-lightText dark:text-darkText'>{shortAddress(token.address, 5)}</a></p>
@@ -290,7 +290,7 @@ const Index = () => {
             </div>
           </div>
           <input id='reciverAddress' type="text" className='w-full mt-2 rounded-lg bg-indigo-50 border border-indigo-300 dark:border-neutral-700 dark:bg-darkBackground text-lightText dark:text-white p-2' placeholder='მიმღების მისამართი' />
-          <button onClick={() => sendToken(token.address, document.getElementById('reciverAddress').value, token.decimal, document.getElementById('sentAmount').value)} type='button' className='w-full duration-150 hover:scale-95 bg-gradient-to-br from-violet to-violetDark bg-pos-0 hover:bg-pos-100 px-5 py-1 mt-2 rounded-lg text-white'>გაგზავნა</button>
+          <button onClick={() => sendToken(token.address, document.getElementById('reciverAddress').value, token.decimal, document.getElementById('sentAmount').value)} type='button' className='w-full duration-150 hover:scale-95 bg-gradient-to-br from-violet to-violetDark bg-pos-0 hover:bg-pos-100 px-5 py-1 mt-2 mb-3 rounded-lg text-white'>გაგზავნა</button>
         </div>
       </Modal>
     </div>
