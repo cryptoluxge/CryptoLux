@@ -6,7 +6,7 @@ import WrongNetwork from '../../../ConnectWallet/WrongNetwork'
 import { Transition } from '@headlessui/react'
 import { MdOpenInNew } from "react-icons/md"
 import { BsFillArrowDownCircleFill, BsFillArrowUpCircleFill } from "react-icons/bs"
-import { AiFillInfoCircle } from "react-icons/ai"
+import Alert from '../../../Alerts'
 import { useWeb3React } from '@web3-react/core'
 import Skelaton from '../../../Skelaton'
 
@@ -67,11 +67,8 @@ const Index = () => {
         </div>
         <div className='hidden md:block'>
           {userData.isLocked ? null : (
-            <div className='p-3'>
-              <div className='bg-teal-100 rounded-lg p-3 flex items-start gap-2 border-[1px] border-teal-500 shadow-md'>
-                <AiFillInfoCircle className='text-2xl text-teal-500' />
-                <p className='text-lightText text-sm w-full font-semibold'>IFO-ში რომ მიიღოთ მონაწილეობა აუცილებელია დალუქოთ CAKE.</p>
-              </div>
+            <div className='px-3'>
+              <Alert variant='info' text='IFO-ში რომ მიიღოთ მონაწილეობა აუცილებელია დალუქოთ CAKE.' />
             </div>
           )}
           <div>

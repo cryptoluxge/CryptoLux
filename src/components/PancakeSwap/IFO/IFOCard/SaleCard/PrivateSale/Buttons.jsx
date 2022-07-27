@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useWeb3React } from '@web3-react/core'
-import { AiFillWarning } from 'react-icons/ai'
+import Alert from '../../../../../Alerts'
 import useBlockNumber from "../../../../../../hooks/useBlocknumber"
 import ApproveIFO from '../Buttons/ApproveIFO'
 import DepositCAKE from '../Buttons/DepositCAKE'
@@ -50,9 +50,8 @@ const Buttons = () => {
                   ) : (<ApproveIFO />)}
                 </div>
               ) : (
-                <div className='bg-red-100 rounded-lg p-2 flex items-start gap-2 border-[1px] border-red-500 shadow-md'>
-                  <AiFillWarning className='text-2xl text-red-500' />
-                  <p className='text-lightText text-sm w-full font-semibold'>თქვენ არ გაქვთ PancakeSquad NFT და ვერ მიიღებთ მონაწილეობას Private Sale-ში.</p>
+                <div className=''>
+                  <Alert variant='error' text='თქვენ არ გაქვთ PancakeSquad NFT და ვერ მიიღებთ მონაწილეობას Private Sale-ში.' />
                 </div>
               )}
             </div>

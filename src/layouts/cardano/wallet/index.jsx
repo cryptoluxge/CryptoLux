@@ -6,26 +6,28 @@ import { MdAccountBalanceWallet, MdSwapHorizontalCircle } from 'react-icons/md'
 import { BsPiggyBankFill } from 'react-icons/bs'
 import { GiToken } from 'react-icons/gi'
 import NotFound from '../../../components/NFT/NotFound'
+import Alert from '../../../components/Alerts'
 
 const Index = () => {
   const [walletData, setWalletData] = useState([])
   const [walletNFTs, setWalletNFTs] = useState([])
   const [walletTokens, setWalletTokens] = useState([])
+  const [notification, setNotification] = useState()
 
   const getWalletData = async () => {
     setWalletData(walletData => [])
+    setNotification(null)
     const address = document.getElementById('walletAddress').value
     if (address === '') {
-      console.log('ცარიელია')
+      setNotification(<Alert variant='info' text="გთხოვთ, შეიყვანოთ მისამართი!" />)
     } else {
       const data = await getWallet(address)
-      console.log(data)
       if (data === 'invalid address') {
-        console.log('invalid address')
+        setNotification(<Alert variant='error' text="მისამართი არასწორია!" />)
       } else if (data === 'no balance') {
-        console.log('ცარიელია')
+        setNotification(<Alert variant='info' text="საფულე ცარიელია" />)
       } else if (data === 'try again') {
-        console.log('try again')
+        setNotification(<Alert variant='error' text="დაფიქსირდა შეცდომა :( ცადეთ მოგვიანებით <3" />)
       } else {
         console.log(data.data)
         setWalletData(data.data)
@@ -93,6 +95,7 @@ const Index = () => {
 
   return (
     <div>
+
       <div className='flex justify-center mt-3'>
         <div className='w-[500px]'>
           <Card className='p-3'>
@@ -105,6 +108,7 @@ const Index = () => {
             <div className='mt-3'>
               <button onClick={() => getWalletData()} className='bg-gradient-to-br from-violet to-violetDark text-white px-5 py-2 rounded-lg w-full duration-150 ease-in-out hover:scale-95'>შემოწმება</button>
             </div>
+            {notification}
           </Card>
         </div>
       </div>

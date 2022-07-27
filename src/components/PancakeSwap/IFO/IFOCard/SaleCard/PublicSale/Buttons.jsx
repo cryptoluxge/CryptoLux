@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import useBlockNumber from "../../../../../../hooks/useBlocknumber"
-import { AiFillWarning } from 'react-icons/ai'
+import Alert from '../../../../../Alerts'
 import ApproveIFO from '../Buttons/ApproveIFO'
 import DepositCAKE from '../Buttons/DepositCAKE'
 import HarvestTokens from '../Buttons/HarvestTokens'
@@ -55,9 +55,8 @@ const Buttons = () => {
                   )}
                 </div>
               ) : (
-                <div className='bg-red-100 rounded-lg p-2 flex items-start gap-2 border-[1px] border-red-500 shadow-md'>
-                  <AiFillWarning className='text-2xl text-red-500' />
-                  <p className='text-lightText text-sm w-full font-semibold'>თქვენ არ გაქვთ iCAKE-ი IFO-ს Public SALE-ში გამოსაყენებლად.</p>
+                <div className=''>
+                  <Alert variant='error' text='თქვენ არ გაქვთ iCAKE-ი IFO-ს Public SALE-ში გამოსაყენებლად.' />
                 </div>
               )}
             </div>
