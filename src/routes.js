@@ -6,6 +6,7 @@ import MarketIcon from "./images/SidebarIcons/MarketIcon.svg"
 import CryptoRankIcon from "./images/SidebarIcons/CryptoRankIcon.svg"
 import PancakeSwapIcon from "./images/SidebarIcons/PancakeSwapIcon.svg"
 import WalletIcon from "./images/SidebarIcons/WalletIcon.svg"
+import CardanoIcon from "./images/SidebarIcons/CardanoIcon.svg"
 
 export const menuItem = [
   {
@@ -85,6 +86,20 @@ export const menuItem = [
         name: "Staking",
         key: "staking",
         path: "/pancakeswap/staking"
+      },
+    ]
+  },
+  {
+    type: "collapsible",
+    path: "/cardano",
+    key: "cardano",
+    name: "Cardano",
+    icon: CardanoIcon,
+    collapse: [
+      {
+        name: "საფულის შემოწმება",
+        key: "wallet",
+        path: "/cardano/wallet"
       },
     ]
   },
