@@ -4,6 +4,8 @@ import { Dialog, Transition } from '@headlessui/react'
 import { useWeb3React } from '@web3-react/core'
 import { getIfoPoolContract, getIfoCakePoolContract } from "../../../../../../utils/BNBChain/PancakeSwapHelpers/contractHelpers"
 import { getVaultUserData, getUserCakeBalance } from "../../../../../../utils/BNBChain/PancakeSwapHelpers/Helpers"
+import { useToast } from '../../../../../../hooks/useToast';
+import { shortAddress } from '../../../../../../utils/WalletHelpers';
 import Web3 from 'web3'
 
 const DepositCAKE = ({ poolType }) => {
@@ -13,6 +15,7 @@ const DepositCAKE = ({ poolType }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [limitPerUserCAKE, setLimitPerUserCAKE] = useState("");
   const [userBalance, setUserBalance] = useState(0)
+  const toast = useToast()
   const web3 = new Web3(window.ethereum);
   const offeringTokenIFOPoolContract = getIfoPoolContract(ifo.poolContract, chainId);
   const IFOPoolContract = getIfoCakePoolContract(chainId);
@@ -43,10 +46,50 @@ const DepositCAKE = ({ poolType }) => {
     const cakeInWei = web3.utils.toWei(cakeInEther, "ether");
     if (poolType === "private") {
       console.log("depositing in private:", cakeInWei);
-      await offeringTokenIFOPoolContract.methods.depositPool(cakeInWei, 0).send({ from: account });
+      await offeringTokenIFOPoolContract.methods.depositPool(cakeInWei, 0).send({ from: account })
+        .once("transactionHash", (hash) => {
+          toast('loading', 'თქვენი ტრანზაქცია მუშავდება', `${shortAddress(hash, 5)}`)
+        })
+        .on("error", (error) => {
+          if (error.code === 4001) {
+            toast('error', 'თქვენ ტრანზაქცია არ დაადასტურეთ')
+          } else if (error.code === -32003) {
+            toast('error', 'თქვენი ტრანზაქცია არ დადასტურდა')
+          } else if (error.code === -32603) {
+            toast('error', 'საკომისიო ძალიან დაბალია.')
+          } else {
+            toast('error', 'შეცდომა', 'ცადეთ თავიდან')
+          }
+        }).then((receipt) => {
+          if (receipt.status === true) {
+            toast('success', 'ტრანზაქცია დადასტურდა')
+          } else {
+            toast('error', 'ტრანზაქცია არ დადასტურდა')
+          }
+        });
     } else {
       console.log("depositing in public:", cakeInWei);
-      await offeringTokenIFOPoolContract.methods.depositPool(cakeInWei, 1).send({ from: account });
+      await offeringTokenIFOPoolContract.methods.depositPool(cakeInWei, 1).send({ from: account })
+        .once("transactionHash", (hash) => {
+          toast('loading', 'თქვენი ტრანზაქცია მუშავდება', `${shortAddress(hash, 5)}`)
+        })
+        .on("error", (error) => {
+          if (error.code === 4001) {
+            toast('error', 'თქვენ ტრანზაქცია არ დაადასტურეთ')
+          } else if (error.code === -32003) {
+            toast('error', 'თქვენი ტრანზაქცია არ დადასტურდა')
+          } else if (error.code === -32603) {
+            toast('error', 'საკომისიო ძალიან დაბალია.')
+          } else {
+            toast('error', 'შეცდომა', 'ცადეთ თავიდან')
+          }
+        }).then((receipt) => {
+          if (receipt.status === true) {
+            toast('success', 'ტრანზაქცია დადასტურდა')
+          } else {
+            toast('error', 'ტრანზაქცია არ დადასტურდა')
+          }
+        });
     }
   }
 

@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import ConnectWallet from '../../../ConnectWallet/ConnectButton'
 import ChangeNetworkBtn from '../../../ConnectWallet/WrongNetwork'
+import { useToast } from '../../../../hooks/useToast'
+import { shortAddress } from '../../../../utils/WalletHelpers'
 import { getSyrupPoolContract } from '../../../../utils/BNBChain/PancakeSwapHelpers/contractHelpers'
 import { getUserSyrupPoolData } from '../../../../utils/BNBChain/PancakeSwapHelpers/Helpers'
 import { useWeb3React } from '@web3-react/core'
@@ -10,6 +12,7 @@ const HarvestButton = ({ poolAddress, name }) => {
   const { account, active, chainId } = useWeb3React()
   const [approved, setApproved] = useState()
   const syrupContract = getSyrupPoolContract(poolAddress, chainId)
+  const toast = useToast()
 
   const harvestRewards = async () => {
     await syrupContract.methods
@@ -19,29 +22,24 @@ const HarvestButton = ({ poolAddress, name }) => {
         console.log(payload);
       })
       .once("transactionHash", (hash) => {
-        console.log(`თქვენი ტრანზაქცია მუშავდება: ${hash}`);
+        toast('loading', 'თქვენი ტრანზაქცია მუშავდება', `${shortAddress(hash, 5)}`)
       })
       .on("error", (error) => {
-        console.log("Error: ", error);
         if (error.code === 4001) {
-          /* showNotification("Transaction rejected by user", "თქვენ ტრანზაქცია არ დაადასტურეთ.", "danger"); */
-          console.log("თქვენ ტრანზაქცია არ დაადასტურეთ.");
+          toast('error', 'თქვენ ტრანზაქცია არ დაადასტურეთ')
         } else if (error.code === -32003) {
-          /* showNotification("Transaction rejected", "თქვენი ტრანზაქცია არ დადასტურდა.", "danger"); */
-          console.log("თქვენი ტრანზაქცია არ დადასტურდა.");
+          toast('error', 'თქვენი ტრანზაქცია არ დადასტურდა')
         } else if (error.code === -32603) {
-          /* showNotification("intrinsic gas too low", "საკომისიო ძალიან დაბალია.", "danger"); */
-          console.log("საკომისიო ძალიან დაბალია.");
+          toast('error', 'საკომისიო ძალიან დაბალია.')
         } else {
-          /* showNotification("შეცდომა", "არ დადასტურდა", "danger"); */
-          console.log("არ დადასტურდა");
+          toast('error', 'შეცდომა', 'ცადეთ თავიდან')
         }
       })
       .then((receipt) => {
         if (receipt.status === true) {
-          console.log("თქვენი ტრანზაქცია დადასტურდა!");
+          toast('success', 'ტრანზაქცია დადასტურდა')
         } else {
-          console.log("FALSEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+          toast('error', 'ტრანზაქცია არ დადასტურდა')
         }
       });
   }

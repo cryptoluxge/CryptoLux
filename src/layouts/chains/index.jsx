@@ -2,7 +2,8 @@ import React from 'react'
 import ChainCard from "../../components/Cards/ChainCard"
 import { networks } from './BlockchainList'
 
-const index = () => {
+const Index = () => {
+
   return (
     <div className='mt-5'>
       <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 w-full'>
@@ -12,4 +13,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

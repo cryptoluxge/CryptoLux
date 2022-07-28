@@ -1,8 +1,11 @@
 import React from 'react'
+import { useToast } from '../../../../hooks/useToast'
 import { getCakeContract } from '../../../../utils/BNBChain/PancakeSwapHelpers/contractHelpers'
+import { shortAddress } from '../../../../utils/WalletHelpers'
 import { useWeb3React } from '@web3-react/core'
 
 const ApproveButtons = ({ poolContract }) => {
+  const toast = useToast()
   const { account, chainId } = useWeb3React()
   const cakeContract = getCakeContract(chainId);
 
@@ -12,15 +15,23 @@ const ApproveButtons = ({ poolContract }) => {
       .send({ from: account })
       .once("transactionHash", (hash) => {
         console.log(`მუშავდება: თქვენი ტრანზაქცია გაიგზავნა: ${hash}`);
+        toast('loading', 'თქვენი ტრანზაქცია მუშავდება', `${shortAddress(hash, 5)}`)
       })
       .on("error", (error) => {
-        console.log("Error: ", error);
         if (error.code === 4001) {
-          console.log("Transaction rejected by user: თქვენ ტრანზაქცია არ დაადასტურეთ.");
+          toast('error', 'თქვენ ტრანზაქცია არ დაადასტურეთ')
         } else if (error.code === -32003) {
-          console.log("Transaction rejected: თქვენი ტრანზაქცია არ დადასტურდა.");
+          toast('error', 'თქვენი ტრანზაქცია არ დადასტურდა')
         } else if (error.code === -32603) {
-          console.log("intrinsic gas too low: საკომისიო ძალიან დაბალია.");
+          toast('error', 'საკომისიო ძალიან დაბალია.')
+        } else {
+          toast('error', 'შეცდომა', 'ცადეთ თავიდან')
+        }
+      }).then((receipt) => {
+        if (receipt.status === true) {
+          toast('success', 'ტრანზაქცია დადასტურდა')
+        } else {
+          toast('error', 'ტრანზაქცია არ დადასტურდა')
         }
       });
   }

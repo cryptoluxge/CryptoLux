@@ -4,6 +4,8 @@ import { getUserCakeBalance } from '../../../../utils/BNBChain/PancakeSwapHelper
 import Web3 from 'web3'
 import { useWeb3React } from '@web3-react/core'
 import { getSyrupPoolContract } from '../../../../utils/BNBChain/PancakeSwapHelpers/contractHelpers'
+import { useToast } from '../../../../hooks/useToast'
+import { shortAddress } from '../../../../utils/WalletHelpers'
 
 const DepositButton = ({ name, poolContract }) => {
   const mountedRef = useRef(true);
@@ -12,6 +14,7 @@ const DepositButton = ({ name, poolContract }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [userBalance, setUserBalance] = useState()
   const [hasUserLimit, setHasUserLimit] = useState()
+  const toast = useToast()
   const web3 = new Web3(window.ethereum);
   const SyrupPoolContract = getSyrupPoolContract(poolContract, chainId)
 
@@ -39,17 +42,25 @@ const DepositButton = ({ name, poolContract }) => {
             console.log(payload);
           })
           .once("transactionHash", (hash) => {
-            console.log(hash);
+            console.log(`მუშავდება: თქვენი ტრანზაქცია გაიგზავნა: ${hash}`);
+            toast('loading', 'თქვენი ტრანზაქცია მუშავდება', `${shortAddress(hash, 5)}`)
           })
           .on("error", (error) => {
-            console.log("ERROR", error);
+            if (error.code === 4001) {
+              toast('error', 'თქვენ ტრანზაქცია არ დაადასტურეთ')
+            } else if (error.code === -32003) {
+              toast('error', 'თქვენი ტრანზაქცია არ დადასტურდა')
+            } else if (error.code === -32603) {
+              toast('error', 'საკომისიო ძალიან დაბალია.')
+            } else {
+              toast('error', 'შეცდომა', 'ცადეთ თავიდან')
+            }
           })
           .then((receipt) => {
-            console.log(receipt);
             if (receipt.status === true) {
-              console.log("დადასტურდა");
+              toast('success', 'ტრანზაქცია დადასტურდა')
             } else {
-              console.log("არ დადასტურდა");
+              toast('error', 'ტრანზაქცია არ დადასტურდა')
             }
           });
       } else if (stakeValue === " ") {

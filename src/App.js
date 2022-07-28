@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import Sidenav from "./components/SideNav"
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import ToastContainer from './components/Toast/ToastContainer';
+import { ToastProvider } from './context/ToastContext';
 import Dashboard from "./layouts/dashboard"
 import Chains from "./layouts/chains"
 import Appliactions from "./layouts/appliactions"
@@ -32,24 +34,27 @@ function App() {
 
   return (
     <div className="p-3 duration-200 min-h-screen bg-lightBackground dark:bg-darkBackground">
-      <BrowserRouter>
-        <Sidenav>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/chains" element={<Chains />} />
-            <Route path="/applications" element={<Appliactions />} />
-            <Route path="/groups" element={<Groups />} />
-            <Route path="/market" element={<Market />} />
-            <Route path="/cryptorank/fund" element={<CRFund />} />
-            <Route path="/cryptorank/fund/:id" element={<VCPage />} />
-            <Route path="/pancakeswap/ifo" element={<IFOPage />} />
-            <Route path="/pancakeswap/staking" element={<Staking />} />
-            <Route path="/wallet" element={<Wallet />} />
-            <Route path="/cardano/wallet" element={<CardanoWallet />} />
-          </Routes>
-        </Sidenav>
-      </BrowserRouter>
+      <ToastProvider>
+        <ToastContainer />
+        <BrowserRouter>
+          <Sidenav>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/chains" element={<Chains />} />
+              <Route path="/applications" element={<Appliactions />} />
+              <Route path="/groups" element={<Groups />} />
+              <Route path="/market" element={<Market />} />
+              <Route path="/cryptorank/fund" element={<CRFund />} />
+              <Route path="/cryptorank/fund/:id" element={<VCPage />} />
+              <Route path="/pancakeswap/ifo" element={<IFOPage />} />
+              <Route path="/pancakeswap/staking" element={<Staking />} />
+              <Route path="/wallet" element={<Wallet />} />
+              <Route path="/cardano/wallet" element={<CardanoWallet />} />
+            </Routes>
+          </Sidenav>
+        </BrowserRouter>
+      </ToastProvider>
     </div>
   );
 }

@@ -323,6 +323,7 @@ export const MilkomedaChain = async () => {
 };
 
 export const CronosChain = async () => {
+
   const provider = window.ethereum;
   try {
     await provider.request({
