@@ -1,7 +1,9 @@
 import React from 'react'
 import MetamaskIcon from '../../images/WalletIcons/MetamaskIcon.svg'
+import { useToast } from '../../hooks/useToast'
 
-const index = ({ variant, address, symbol, decimal }) => {
+const Index = ({ variant, address, symbol, decimal }) => {
+  const toast = useToast()
   if (symbol.length > 11) {
     symbol = symbol.slice(0, 11)
   }
@@ -20,13 +22,13 @@ const index = ({ variant, address, symbol, decimal }) => {
       })
       .then((success) => {
         if (success) {
-          console.log('FOO successfully added to wallet!');
+          toast('success', `${symbol} დაემატა Metamask-ში`)
         } else {
-          throw new Error('Something went wrong.');
+          toast('error', 'Something went wrong')
         }
       })
       .catch((error) => {
-        console.log(error)
+        toast('error', error.message)
       });
   }
 
@@ -51,4 +53,4 @@ const index = ({ variant, address, symbol, decimal }) => {
   )
 }
 
-export default index
+export default Index

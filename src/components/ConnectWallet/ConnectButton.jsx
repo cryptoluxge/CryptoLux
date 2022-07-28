@@ -5,11 +5,13 @@ import TrustWalletIcon from "../../images/WalletIcons/TrustWalletIcon.svg"
 import WalletItem from './WalletItem'
 import { injected } from "./connectors"
 import { useWeb3React } from '@web3-react/core'
+import { useToast } from '../../hooks/useToast'
 
 export default function Modal({ text }) {
 	const { activate } = useWeb3React()
 	const [open, setOpen] = useState(false)
 	const cancelButtonRef = useRef(null)
+	const toast = useToast()
 	const provider = window.ethereum;
 
 	async function connect() {
@@ -18,7 +20,7 @@ export default function Modal({ text }) {
 				await activate(injected);
 				localStorage.setItem("isWalletConnected", true);
 			} else {
-				console.log("გთხოვთ დააყენოთ Metamask!");
+				toast('error', 'საფულის დასაკავშირებლად საჭიროა Metamask!')
 			}
 		} catch (ex) {
 			console.log("ERROR", ex);
